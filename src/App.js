@@ -19,7 +19,7 @@ function App() {
 
   const [dadosFormulario, setDadosFormulario] = useState({
     nome: '',
-    valor: '',
+    valor: null,
     tipo: 'despesa',
     formaPagamento: '',
   });
@@ -110,13 +110,13 @@ function App() {
       <div className="section">
         <div className='titulos'>
           <h1>Receita</h1>
-          <p>Total: {totalReceita}</p>
+          <p>Total: R${totalReceita.toFixed(2)}</p>
         </div>
 
         <div className='areacards'>
           {
             registrosReceita.map((registro)=> {return (
-              <Card nome={registro.nome} valor={registro.valor} tipo={registro.formaPagamento} onClick={()=>handleDeleteRegistro(registro.id, registro.tipo, registro.valor)}/>
+              <Card nome={registro.nome} valor={Number.parseFloat(registro.valor).toFixed(2)} tipo={registro.formaPagamento} onClick={()=>handleDeleteRegistro(registro.id, registro.tipo, registro.valor)}/>
             )})
           }
         </div>
@@ -126,13 +126,13 @@ function App() {
       <div className="section">
         <div className='titulos'>
           <h1>Despesa</h1>
-          <p>Total: {totalDespesa}</p>
+          <p>Total: R${totalDespesa.toFixed(2)}</p>
         </div>
 
         <div className='areacards'>
           {
             registrosDespesa.map((registro)=> {return (
-              <Card nome={registro.nome} valor={registro.valor} tipo={registro.formaPagamento} onClick={()=>handleDeleteRegistro(registro.id, registro.tipo, registro.valor)}/>
+              <Card nome={registro.nome} valor={Number.parseFloat(registro.valor).toFixed(2)} tipo={registro.formaPagamento} onClick={()=>handleDeleteRegistro(registro.id, registro.tipo, registro.valor)}/>
             )})
           }
         </div>
